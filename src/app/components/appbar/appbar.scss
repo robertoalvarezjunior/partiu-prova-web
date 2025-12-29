@@ -1,0 +1,83 @@
+@use "../../../global";
+
+$nav-gap: 1.5rem;
+$header-height: 64px;
+
+// header.scss
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid #dedcd3;
+    height: $header-height;
+
+    &__logo-container {
+        display: flex;
+        align-items: center;
+        height: 100%; // Ocupa toda a altura do header
+    }
+
+    &__logo {
+        height: 100%; // Proporcional à altura do header
+        width: auto; // Mantém o aspect ratio
+        align-items: center;
+        object-fit: contain;
+    }
+
+    // Seletor para os containers de links (nav e auth)
+    .nav-main {
+        display: flex;
+        align-items: center;
+        gap: $nav-gap;
+
+        a {
+            text-decoration: none;
+            color: #333;
+            padding: 0.5rem;
+            transition: color 0.2s ease;
+            font-weight: 500;
+
+            &:hover {
+                color: global.$primary-color;
+            }
+
+            &:focus-visible {
+                outline: 2px solid global.$primary-color;
+                border-radius: 4px;
+            }
+        }
+    }
+
+    .nav-auth {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+        a {
+            text-decoration: none;
+            color: #333;
+            padding: 0.5rem;
+            transition: color 0.2s ease;
+            font-weight: 500;
+            border-radius: global.$border-radius;
+            padding: 8px 12px;
+
+            &:hover {
+                background-color: global.$primary-color-hover;
+            }
+
+            &:focus-visible {
+                outline: 2px solid global.$primary-color;
+                border-radius: 12px;
+            }
+        }
+    }
+
+    // Mobile-first: Esconde navegação principal em telas pequenas
+    @media (max-width: global.$mobile-breakpoint) {
+        .nav-main {
+            display: none;
+        }
+    }
+}

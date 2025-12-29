@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Endereco } from './endereco';
+import { Home } from './home';
 
-describe('Endereco', () => {
-  let component: Endereco;
-  let fixture: ComponentFixture<Endereco>;
+describe('Home', () => {
+  let component: Home;
+  let fixture: ComponentFixture<Home>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Endereco]
+      imports: [Home]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(Endereco);
+    fixture = TestBed.createComponent(Home);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    await fixture.whenStable();
   });
 
   it('should create', () => {

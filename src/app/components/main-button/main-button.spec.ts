@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RegisterEvent } from './register-event';
+import { MainButton } from './main-button';
 
-describe('RegisterEvent', () => {
-  let component: RegisterEvent;
-  let fixture: ComponentFixture<RegisterEvent>;
+describe('MainButton', () => {
+  let component: MainButton;
+  let fixture: ComponentFixture<MainButton>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RegisterEvent]
+      imports: [MainButton]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(RegisterEvent);
+    fixture = TestBed.createComponent(MainButton);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    await fixture.whenStable();
   });
 
   it('should create', () => {

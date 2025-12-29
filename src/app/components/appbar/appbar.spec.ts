@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DateTime } from './date-time';
+import { Appbar } from './appbar';
 
-describe('DateTime', () => {
-  let component: DateTime;
-  let fixture: ComponentFixture<DateTime>;
+describe('Appbar', () => {
+  let component: Appbar;
+  let fixture: ComponentFixture<Appbar>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DateTime]
+      imports: [Appbar]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(DateTime);
+    fixture = TestBed.createComponent(Appbar);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    await fixture.whenStable();
   });
 
   it('should create', () => {
