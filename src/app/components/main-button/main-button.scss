@@ -1,19 +1,18 @@
-@use "../../../global";
+@use "../../../global" as g;
 
 :host.main-button {
     display: inline-block;
 
     button {
-        background-color: global.$primary-color;
         font-weight: 500;
         border: 0;
-        border-radius: global.$border-radius;
+        border-radius: g.$border-radius;
         color: #333;
         cursor: pointer;
         transition: background-color 0.2s;
 
         &:hover {
-            background-color: global.$primary-color-hover;
+            background-color: map-get(g.$colors, 'primary-hover-light');
         }
     }
 
@@ -23,6 +22,16 @@
     }
 
     &--lg button {
-        padding: 12px 16px;
+        padding: 12px 2rem;
+    }
+
+    &--main-color button {
+        background-color: map-get(g.$colors, 'primary-light');
+    }
+
+    &--none-color button {
+        background-color: transparent;
+        border: 1px solid #b8b8b8;
+
     }
 }

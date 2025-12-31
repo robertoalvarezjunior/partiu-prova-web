@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 
-@use "global";
+@use "global" as g;
 @use "tailwindcss";
 
 * {
@@ -10,5 +10,19 @@
 }
 
 body {
-    background-color: global.$background-color;
+    background-color: map-get(g.$colors, 'bg-light');
+}
+
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 10px;
+    border-top: 1px solid #dedcd3;
+
+    div {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
 }

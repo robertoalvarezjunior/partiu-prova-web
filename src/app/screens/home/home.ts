@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { Appbar } from "../../components/appbar/appbar";
 import { MainButton } from "../../components/main-button/main-button";
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-home',
-  imports: [Appbar],
+  imports: [Appbar, RouterLink, MainButton],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })

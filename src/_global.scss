@@ -1,5 +1,16 @@
-$background-color: #faf8f5;
-$primary-color: #e6ac00;
-$primary-color-hover: #e8b418;
 $mobile-breakpoint: 768px;
 $border-radius: 12px;
+$nav-height: 64px;
+
+$colors: (
+    "primary-light": #e6ac00,
+    "primary-hover-light": #e8b418,
+    "bg-light": #faf8f5,
+    "bg-hl-light": #f8f1de
+);
+
+$font-sizes: (
+    "h1-mobile": 2.5rem,
+    "h1-desktop": 4rem,
+    "body": 1.125rem
+);

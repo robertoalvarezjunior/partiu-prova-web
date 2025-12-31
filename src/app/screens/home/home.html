@@ -1,1 +1,34 @@
 <app-appbar />
+<section class="hero-section">
+  <div class="hero-section__container">
+    <h1 class="hero-section__title">
+      Encontre sua
+      <span class="hero-section__title--highlight">próxima prova</span>
+    </h1>
+    <p class="hero-section__description">
+      Retire seu ingresso e viva a emoção de cruzar a linha de chegada.
+    </p>
+    <div class="hero-section__button">
+      <app-main-button routerLink="/events">Ver Eventos &rarr;</app-main-button>
+      <app-main-button bgColor="none-color" routerLink="/register">Criar Conta</app-main-button>
+    </div>
+  </div>
+</section>
+<section class="next-event">
+  <div class="next-event__container">
+    <h1 class="next-event__title">Próximos eventos</h1>
+    <div class="next-event__description__container">
+      <p>As melhores provas te esperam</p>
+      <a routerLink="/events">Ver todos &rarr;</a>
+    </div>
+  </div>
+</section>
+<section class="end-section">
+  <div class="end-section__container">
+    <h1 class="end-section__title">pronto para correr?</h1>
+    <p class="end-section__description">
+      Crie sua conta agora e receba alertas sobre novos eventos na sua região.
+    </p>
+    <app-main-button routerLink="/register">Começar Agora</app-main-button>
+  </div>
+</section>

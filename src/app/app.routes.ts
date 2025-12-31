@@ -11,12 +11,12 @@ export const routes: Routes = [
     loadComponent: () => import('./components/register/register').then((m) => m.Register),
   },
   {
-    path: 'home',
+    path: '',
     component: Home,
   },
   {
     path: '',
-    redirectTo: '/home',
+    redirectTo: '/',
     pathMatch: 'full',
   },
 ];

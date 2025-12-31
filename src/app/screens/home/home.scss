@@ -1,0 +1,109 @@
+@use "../../../global" as v;
+
+.hero-section {
+    padding: calc(4rem + v.$nav-height) 0 4rem 0;
+    border-bottom: 1px solid #dedcd3;
+    margin: 0 auto;
+
+    &__container {
+        max-width: 1440px;
+        margin: 0 auto;
+        padding: 0 12px;
+    }
+
+    &__title {
+        font-size: map-get(v.$font-sizes, "h1-desktop");
+        font-weight: 800;
+        text-transform: uppercase;
+        line-height: 1.1;
+        color: rgb(46, 46, 46);
+        margin-bottom: 1.5rem;
+
+        &--highlight {
+            display: block;
+            color: map-get(v.$colors, "primary-light");
+        }
+    }
+
+    &__description {
+        font-size: map-get(v.$font-sizes, "body");
+        color: rgb(61, 61, 61);
+        line-height: 1.6;
+        max-width: 550px;
+    }
+
+    &__button {
+        display: flex;
+        align-items: start;
+        gap: 1rem;
+        margin-top: 1.5rem;
+    }
+}
+
+.next-event {
+    margin-bottom: 1.5rem;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 4rem 0;
+
+
+    &__container {
+        margin: 0 auto;
+        padding: 0 12px;
+    }
+
+    &__title {
+        font-size: map-get(v.$font-sizes, "h1-mobile");
+        font-weight: 800;
+        text-transform: uppercase;
+        line-height: 1.1;
+        color: rgb(46, 46, 46);
+        margin-bottom: 1rem;
+    }
+
+    &__description__container {
+        display: flex;
+        align-items: start;
+        justify-content: space-between;
+
+        a {
+            color: map-get(v.$colors, "primary-light");
+            background-color: map-get(v.$colors, "bg-hl-light");
+            border: 1px solid map-get(v.$colors, "primary-light");
+            border-radius: 8px;
+
+            padding: 4px 1rem;
+
+            &:hover {
+                background-color: map-get(v.$colors, "primary-light");
+                color: map-get(v.$colors, "bg-light");
+            }
+        }
+    }
+}
+
+.end-section {
+    padding: 4rem 0;
+    background-color: map-get(v.$colors, 'bg-hl-light');
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+    }
+
+    &__title {
+        font-size: map-get(v.$font-sizes, "h1-mobile");
+        font-weight: 800;
+        text-transform: uppercase;
+        line-height: 1.1;
+        color: rgb(46, 46, 46);
+    }
+
+    &__description {
+        font-size: map-get(v.$font-sizes, "body");
+        color: rgb(61, 61, 61);
+        font-weight: 500;
+    }
+}

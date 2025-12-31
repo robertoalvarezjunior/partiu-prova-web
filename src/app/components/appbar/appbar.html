@@ -1,23 +1,27 @@
 <header class="header">
-  <div class="header__logo-container">
-    <img
-      class="header__logo"
-      ngSrc="images/logo.png"
-      width="100"
-      height="40"
-      priority
-      alt="Partiu Prova"
-    />
-  </div>
+  <div class="header__container">
+    <div class="header__container__logo-container">
+      <img
+        class="header__container__logo"
+        ngSrc="images/logo.png"
+        width="100"
+        height="40"
+        priority
+        alt="Partiu Prova"
+      />
+    </div>
 
-  <nav class="nav-main" aria-label="Navegação principal">
-    <a href="#">Início</a>
-    <a href="#">Eventos</a>
-    <a href="#">Meus Ingressos</a>
-  </nav>
+    <nav class="nav-main" aria-label="Navegação principal">
+      <a href="#">Início</a>
+      <a href="#">Eventos</a>
+      <a href="#">Meus Ingressos</a>
+    </nav>
 
-  <div class="nav-auth">
-    <a routerLink="/login" class="btn-login">Entrar</a>
-    <app-main-button size="sm" routerLink="/register" (click)="teste()">Cadastrar</app-main-button>
+    <div class="nav-auth">
+      <a routerLink="/login" class="btn-login">Entrar</a>
+      <app-main-button size="sm" routerLink="/register" (click)="teste()"
+        >Cadastrar</app-main-button
+      >
+    </div>
   </div>
 </header>
