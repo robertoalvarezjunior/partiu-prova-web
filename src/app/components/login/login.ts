@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 import { Component, inject, signal } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -11,6 +11,8 @@ import { RouterLink } from '@angular/router';
 })
 export class Login {
   private fb = inject(FormBuilder);
+
+  private http = inject(HttpClient);
   
   // UI State com Signals
   isLoading = signal(false);
@@ -29,9 +31,16 @@ export class Login {
   onSubmit(): void {
     if (this.loginForm.valid) {
       this.isLoading.set(true);
-      console.log('Dados de login:', this.loginForm.value);
-      // Simulação de delay de rede
-      setTimeout(() => this.isLoading.set(false), 2000);
+      this.http.post('http://localhost:8080/login', this.loginForm.value).subscribe({
+        next: (response) => {
+          console.log('Login successful', response);
+          this.isLoading.set(false);
+        },
+        error: (error) => {
+          console.error('Login failed', error);
+          this.isLoading.set(false);
+        }
+      });
     }
   }
 }

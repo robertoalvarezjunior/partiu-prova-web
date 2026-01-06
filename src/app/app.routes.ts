@@ -15,6 +15,10 @@ export const routes: Routes = [
     component: Home,
   },
   {
+    path: 'success',
+    loadComponent: () => import('./components/success/success').then((m) => m.Success),
+  },
+  {
     path: '',
     redirectTo: '/',
     pathMatch: 'full',
