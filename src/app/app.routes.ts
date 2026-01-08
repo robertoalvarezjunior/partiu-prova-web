@@ -4,11 +4,11 @@ import { Home } from './screens/home/home';
 export const routes: Routes = [
   {
     path: 'login',
-    loadComponent: () => import('./components/login/login').then((m) => m.Login),
+    loadComponent: () => import('./screens/login/login').then((m) => m.Login),
   },
   {
-    path: 'register',
-    loadComponent: () => import('./components/register/register').then((m) => m.Register),
+    path: 'sign-up',
+    loadComponent: () => import('./screens/sign-up/sign-up').then((m) => m.SignUp),
   },
   {
     path: '',
@@ -16,7 +16,12 @@ export const routes: Routes = [
   },
   {
     path: 'success',
-    loadComponent: () => import('./components/success/success').then((m) => m.Success),
+    loadComponent: () =>
+      import('./components/success-component/success-component').then((m) => m.SuccessComponent),
+  },
+  {
+    path: 'auth/callback',
+    loadComponent: () => import('./features/auth/callback/callback').then((m) => m.Callback),
   },
   {
     path: '',

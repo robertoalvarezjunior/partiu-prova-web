@@ -1,0 +1,43 @@
+@use "../../../global" as g;
+
+:host.main-button {
+    display: inline-block;
+
+    button {
+        font-weight: 500;
+        border: 0;
+        border-radius: g.$border-radius;
+        color: #333;
+        cursor: pointer;
+        transition: background-color 0.2s;
+        width: 100%;
+
+        &:hover {
+            background-color: map-get(g.$colors, 'primary-hover-light');
+        }
+    }
+
+    // Modificadores baseados na classe do host
+    &--sm button {
+        padding: 8px 12px;
+    }
+
+    &--lg button {
+        padding: 12px 2rem;
+    }
+
+    &--main-color button {
+        background-color: map-get(g.$colors, 'primary-light');
+    }
+
+    &--none-color button {
+        background-color: transparent;
+        border: 1px solid #b8b8b8;
+    }
+
+    &--disabled button {
+        opacity: 0.6;
+        pointer-events: none;
+        cursor: not-allowed;
+    }
+}

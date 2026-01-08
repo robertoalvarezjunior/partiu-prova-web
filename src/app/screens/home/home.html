@@ -1,4 +1,4 @@
-<app-appbar />
+<app-appbar-component />
 <section class="hero-section">
   <div class="hero-section__container">
     <h1 class="hero-section__title">
@@ -9,8 +9,8 @@
       Retire seu ingresso e viva a emoção de cruzar a linha de chegada.
     </p>
     <div class="hero-section__button">
-      <app-main-button routerLink="/events">Ver Eventos &rarr;</app-main-button>
-      <app-main-button bgColor="none-color" routerLink="/register">Criar Conta</app-main-button>
+      <button ui-button size="lg" routerLink="/events">Ver Eventos &rarr;</button>
+      <button ui-button size="lg" variant="secondary" routerLink="/sign-up">Criar Conta</button>
     </div>
   </div>
 </section>
@@ -29,6 +29,6 @@
     <p class="end-section__description">
       Crie sua conta agora e receba alertas sobre novos eventos na sua região.
     </p>
-    <app-main-button routerLink="/register">Começar Agora</app-main-button>
+    <button ui-button size="lg" routerLink="/sign-up">Começar Agora</button>
   </div>
 </section>

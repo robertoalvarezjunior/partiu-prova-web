@@ -1,0 +1,67 @@
+<main class="main">
+  <div class="card">
+    <div class="title">
+      <h2>Que bom ter você conosco!</h2>
+    </div>
+    <form (submit)="onSubmit()" class="form">
+      <div class="form-group">
+        <div class="form-input">
+          <label for="email" class="">E-mail</label>
+          <input
+            id="email"
+            type="email"
+            [field]="signUpForm.email"
+            placeholder="exemplo@email.com"
+          />
+          @if (signUpForm.email().invalid() && signUpForm.email().touched()) {
+          <div class="error-message">
+            @for (error of signUpForm.email().errors(); track error) {
+            <p>{{ error.message }}</p>
+            }
+          </div>
+          }
+        </div>
+        <div class="form-input">
+          <label for="password" class="">Senha</label>
+          <input
+            id="password"
+            type="password"
+            [field]="signUpForm.password"
+            placeholder="••••••••"
+          />
+          @if (signUpForm.password().invalid() && signUpForm.password().touched()) {
+          <div class="error-message">
+            @for (error of signUpForm.password().errors(); track error) {
+            <p>{{ error.message }}</p>
+            }
+          </div>
+          }
+        </div>
+        <div class="form-input">
+          <div class="">
+            <label for="confirmPassword" class="">Confirmar Senha</label>
+          </div>
+          <input
+            id="confirmPassword"
+            type="password"
+            [field]="signUpForm.confirmPassword"
+            placeholder="••••••••"
+          />
+          @if (signUpForm.confirmPassword().invalid() && signUpForm.confirmPassword().touched()) {
+          <div class="error-message">
+            @for (error of signUpForm.confirmPassword().errors(); track error) {
+            <p>{{ error.message }}</p>
+            }
+          </div>
+          }
+          <a>Esqueceu a senha?</a>
+        </div>
+        <app-main-button-component size="lg" [disabled]="signUpForm().invalid() || isLoading()"
+          >@if (isLoading()) {
+          <span class="animate-pulse">Autenticando...</span>
+          } @else { ENTRAR NA CONTA }</app-main-button-component
+        >
+      </div>
+    </form>
+  </div>
+</main>

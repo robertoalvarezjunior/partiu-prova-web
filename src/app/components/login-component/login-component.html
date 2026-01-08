@@ -1,0 +1,72 @@
+<main class="main">
+  <div class="card">
+    <div class="title">
+      <h2>Bem-vindo de volta!</h2>
+    </div>
+    <button
+      type="button"
+      (click)="loginWithGoogle()"
+      [disabled]="isLoadingGoogle() || isLoading()"
+      class="card-social-button"
+    >
+      <img
+        src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
+        alt="Google Logo"
+      />
+      @if (isLoadingGoogle()) {
+      <span>Conectando...</span>
+      } @else { Continuar com o Google }
+    </button>
+    <div class="divider">
+      <div class="divider-text">
+        <span>Ou use seu e-mail</span>
+      </div>
+    </div>
+    <form (submit)="onSubmit($event)" class="form">
+      <div class="form-group">
+        <div class="form-input">
+          <label for="email" class="">E-mail</label>
+          <input
+            id="email"
+            type="email"
+            [field]="loginForm.email"
+            placeholder="exemplo@email.com"
+          />
+          @if (loginForm.email().invalid() && loginForm.email().touched()) {
+          <div class="error-message">
+            @for (error of loginForm.email().errors(); track error) {
+            <p>{{ error.message }}</p>
+            }
+          </div>
+          }
+        </div>
+        <div class="form-input">
+          <label for="password" class="">Senha</label>
+          <input
+            id="password"
+            type="password"
+            [field]="loginForm.password"
+            placeholder="••••••••"
+          />
+          @if (loginForm.password().invalid() && loginForm.password().touched()) {
+          <div class="error-message">
+            @for (error of loginForm.password().errors(); track error) {
+            <p>{{ error.message }}</p>
+            }
+          </div>
+          }
+          <a>Esqueceu a senha?</a>
+        </div>
+        <app-main-button-component size="lg" [disabled]="loginForm().invalid() || isLoading()"
+          >@if (isLoading()) {
+          <span class="animate-pulse">Autenticando...</span>
+          } @else { ENTRAR NA CONTA }</app-main-button-component
+        >
+      </div>
+    </form>
+    <div class="p-cadastro">
+      <p>Não tem uma conta?</p>
+      <a routerLink="/sign-up">Cadastre-se</a>
+    </div>
+  </div>
+</main>

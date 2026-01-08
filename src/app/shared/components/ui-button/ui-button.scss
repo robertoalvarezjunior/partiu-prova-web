@@ -1,0 +1,70 @@
+@use "../../../../global" as g;
+
+
+:host {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: g.$border-radius;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition: filter 0.2s, opacity 0.2s;
+
+    &.w {
+        width: 100%;
+    }
+
+    &.ui-button {
+
+        &--primary {
+            background-color: map-get(g.$colors, 'primary-light');
+        }
+
+        &--secondary {
+            background-color: map-get(g.$colors, 'bg-secondary');
+            border: 1px solid map-get(g.$colors, 'bc-secondary');
+
+            &:hover {
+                background-color: map-get(g.$colors, 'primary-light');
+                border-color: map-get(g.$colors, 'primary-light');
+            }
+        }
+
+        &--tertiary {
+            background-color: transparent;
+
+            &:hover {
+                background-color: map-get(g.$colors, 'primary-light');
+            }
+        }
+
+    }
+
+    &.ui-button-p {
+        &--sm {
+            padding: 8px 12px;
+        }
+
+        &--md {
+            padding: 8px 16px;
+        }
+
+
+        &--lg {
+            padding: 12px 2rem;
+        }
+    }
+
+
+    &:disabled,
+    &.is-loading {
+        opacity: 0.6;
+        cursor: not-allowed;
+        pointer-events: none;
+    }
+
+    &:hover:not(:disabled):not(.ui-button--tertiary):not(.ui-button--secondary) {
+        filter: brightness(0.9);
+    }
+}

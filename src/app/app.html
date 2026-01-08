@@ -1,1 +1,6 @@
-<router-outlet>
+@if (!bannerDev) {
+<div class="banner-dev">
+  <p>Você está em ambiente de testes</p>
+</div>
+}
+<router-outlet></router-outlet>
