@@ -1,0 +1,34 @@
+<header class="header">
+  <div class="header__container">
+    <div class="header__container__logo-container">
+      <a class="header__container__logo" routerLink="/"
+        ><img ngSrc="assets/images/logo.png" width="367" height="125" priority alt="Partiu Prova"
+      /></a>
+    </div>
+
+    <nav class="nav-main" aria-label="Navegação principal">
+      <a routerLink="/">Início</a>
+      <a href="#">Eventos</a>
+      @if (auth.isAuthenticated()) {
+      <a href="#">Meus Ingressos</a>
+      }
+    </nav>
+    <div class="nav-auth">
+      @if (auth.isAuthenticated()) {
+      <div class="user-menu">
+        <button class="avatar-button" (click)="toggleMenu()">
+          <span class="avatar-initial">{{ userInitial() }}</span>
+        </button>
+        @if (isMenuOpen()) {
+        <div class="menu">
+          <a routerLink="/profile" (click)="closeMenu()">Ver perfil</a>
+          <button (click)="signOut()">Sair</button>
+        </div>
+        }
+      </div>
+      } @else { <button ui-button size="md" variant="tertiary" routerLink="/login">Entrar</button>
+      <button ui-button size="md" routerLink="/sign-up">Cadastrar</button>
+      }
+    </div>
+  </div>
+</header>

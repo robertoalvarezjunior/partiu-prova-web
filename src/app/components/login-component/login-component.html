@@ -54,6 +54,10 @@
             <p>{{ error.message }}</p>
             }
           </div>
+          } @if (hasError()) {
+          <div class="error-message">
+            <p>{{ hasError() }}</p>
+          </div>
           }
           <a>Esqueceu a senha?</a>
         </div>

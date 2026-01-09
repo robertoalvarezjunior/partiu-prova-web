@@ -1,8 +1,8 @@
-import { Component, signal } from '@angular/core';
-import { RouterLink } from '@angular/router';
-import { injectAuthService } from '../../services/auth-service';
+import { Component, inject, signal } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
 import { email, Field, form, minLength, required, submit } from '@angular/forms/signals';
 import { MainButtonComponent } from '../main-button-component/main-button-component';
+import { injectAuthService } from '../../core/auth/services/auth.service';
 
 @Component({
   selector: 'app-login-component',
@@ -13,6 +13,9 @@ import { MainButtonComponent } from '../main-button-component/main-button-compon
 })
 export class LoginComponent {
   private client = injectAuthService();
+  private readonly router = inject(Router);
+
+  hasError = signal<string | null>(null);
 
   loginModel = signal({
     email: '',
@@ -49,10 +52,12 @@ export class LoginComponent {
 
           if (error) throw error;
 
-          alert('Login successful!');
+          this.router.navigate(['/success'], {
+            replaceUrl: true,
+          });
         } catch (error) {
           if (error instanceof Error) {
-            alert(error.message);
+            this.hasError.set('Usuário ou senha inválidos.');
           }
         } finally {
           this.isLoading.set(false);

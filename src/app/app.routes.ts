@@ -1,14 +1,14 @@
 import { Routes } from '@angular/router';
-import { Home } from './screens/home/home';
+import { Home } from './features/home/home';
 
 export const routes: Routes = [
   {
     path: 'login',
-    loadComponent: () => import('./screens/login/login').then((m) => m.Login),
+    loadComponent: () => import('./features/login/login').then((m) => m.Login),
   },
   {
     path: 'sign-up',
-    loadComponent: () => import('./screens/sign-up/sign-up').then((m) => m.SignUp),
+    loadComponent: () => import('./features/sign-up/sign-up').then((m) => m.SignUp),
   },
   {
     path: '',
@@ -22,6 +22,10 @@ export const routes: Routes = [
   {
     path: 'auth/callback',
     loadComponent: () => import('./features/auth/callback/callback').then((m) => m.Callback),
+  },
+  {
+    path: 'profile',
+    loadComponent: () => import('./features/profile/profile').then((m) => m.Profile),
   },
   {
     path: '',

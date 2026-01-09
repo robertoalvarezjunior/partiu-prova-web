@@ -1,7 +1,8 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { MainButtonComponent } from '../main-button-component/main-button-component';
-import { email, form, minLength, required, validate, Field } from '@angular/forms/signals';
-import { injectAuthService } from '../../services/auth-service';
+import { email, form, minLength, required, validate, Field, submit } from '@angular/forms/signals';
+import { injectAuthService } from '../../core/auth/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up-component',
@@ -16,7 +17,9 @@ export class SignUpComponent {
     confirmPassword: '',
   });
 
-  private client = injectAuthService();
+  private readonly router = inject(Router);
+
+  private auth = injectAuthService();
 
   // UI State com Signals
   isLoading = signal(false);
@@ -43,11 +46,30 @@ export class SignUpComponent {
     });
   });
 
-  async loginWithGoogle() {
-    this.isLoadingGoogle.set(true);
-    this.client.signInWithOauth();
-    this.isLoadingGoogle.set(false);
-  }
+  onSubmit(event: Event) {
+    event.preventDefault();
+    if (this.signUpForm().valid()) {
+      submit(this.signUpForm, async () => {
+        try {
+          this.isLoading.set(true);
+          const { data, error } = await this.auth.signUp(
+            this.signUpForm.email().value(),
+            this.signUpForm.password().value()
+          );
 
-  async onSubmit(): Promise<void> {}
+          if (error) throw error;
+
+          this.router.navigate(['/success'], {
+            replaceUrl: true,
+          });
+        } catch (error) {
+          if (error instanceof Error) {
+            alert(error.message);
+          }
+        } finally {
+          this.isLoading.set(false);
+        }
+      });
+    }
+  }
 }
