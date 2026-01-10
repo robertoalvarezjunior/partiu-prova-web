@@ -3,8 +3,8 @@ import { ChangeDetectionStrategy, Component, computed, input, output } from '@an
 @Component({
   selector: 'button[ui-button]',
   imports: [],
-  templateUrl: './ui-button.html',
-  styleUrl: './ui-button.scss',
+  templateUrl: './ui.button.html',
+  styleUrl: './ui.button.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     '[class]': 'classes()',

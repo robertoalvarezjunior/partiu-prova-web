@@ -9,7 +9,9 @@
     </p>
     <div class="hero-section__button">
       <button ui-button size="lg" routerLink="/events">Ver Eventos &rarr;</button>
+      @if (!auth.isAuthenticated()) {
       <button ui-button size="lg" variant="secondary" routerLink="/sign-up">Criar Conta</button>
+      }
     </div>
   </div>
 </section>
@@ -21,6 +23,11 @@
       <a routerLink="/events">Ver todos &rarr;</a>
     </div>
   </div>
+  <div class="events">
+    @for (item of events(); track $index) {
+    <app-ui-card-event></app-ui-card-event>
+    }
+  </div>
 </section>
 <section class="end-section">
   <div class="end-section__container">
@@ -28,6 +35,10 @@
     <p class="end-section__description">
       Crie sua conta agora e receba alertas sobre novos eventos na sua região.
     </p>
+    @if (auth.isAuthenticated()) {
+    <button ui-button size="lg" routerLink="/events">Ver Eventos</button>
+    }@else {
     <button ui-button size="lg" routerLink="/sign-up">Começar Agora</button>
+    }
   </div>
 </section>

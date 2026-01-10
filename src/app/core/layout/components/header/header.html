@@ -1,16 +1,18 @@
 <header class="header">
   <div class="header__container">
-    <div class="header__container__logo-container">
-      <a class="header__container__logo" routerLink="/"
+    <div class="logo-container">
+      <a class="logo-container__logo" routerLink="/"
         ><img ngSrc="assets/images/logo.png" width="367" height="125" priority alt="Partiu Prova"
       /></a>
     </div>
 
     <nav class="nav-main" aria-label="Navegação principal">
-      <a routerLink="/">Início</a>
-      <a href="#">Eventos</a>
+      <a routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }"
+        >Início</a
+      >
+      <a routerLink="/events" routerLinkActive="active-link">Eventos</a>
       @if (auth.isAuthenticated()) {
-      <a href="#">Meus Ingressos</a>
+      <a routerLink="/my-tickets" routerLinkActive="active-link">Meus Ingressos</a>
       }
     </nav>
     <div class="nav-auth">
@@ -26,9 +28,28 @@
         </div>
         }
       </div>
-      } @else { <button ui-button size="md" variant="tertiary" routerLink="/login">Entrar</button>
+      } @else {
+      <button ui-button size="md" variant="tertiary" routerLink="/login">Entrar</button>
       <button ui-button size="md" routerLink="/sign-up">Cadastrar</button>
       }
     </div>
+    <button class="menu-hamburguer" (click)="toggleMenu()"><span></span></button>
+    @if (isMenuOpen()) {
+    <div class="mobile-overlay">
+      <nav class="nav-mobile">
+        <a routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }"
+          >Início</a
+        >
+        <a routerLink="/events" routerLinkActive="active-link">Eventos</a>
+        @if (auth.isAuthenticated()) {
+        <a routerLink="/my-tickets" routerLinkActive="active-link">Meus Ingressos</a>
+        } @if (!auth.isAuthenticated()) {
+        <hr />
+        <button ui-button variant="secondary" routerLink="/login">Entrar</button>
+        <button ui-button routerLink="/sign-up">Cadastrar-se</button>
+        }
+      </nav>
+    </div>
+    }
   </div>
 </header>

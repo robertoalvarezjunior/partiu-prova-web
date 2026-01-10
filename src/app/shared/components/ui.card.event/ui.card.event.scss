@@ -1,0 +1,91 @@
+@use '../../../../global' as g;
+
+// _variables.scss
+$color-primary: #e0e0e0;
+$color-bg-card: #ffffff;
+$color-text-main: #1f2937;
+$color-text-muted: #6b7280;
+$border-color: #e5e7eb;
+$shadow-card: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+$transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+.event-card {
+    background-color: white;
+    border: 1px solid $color-primary;
+    border-radius: g.$border-radius;
+    overflow: hidden;
+    transition: border-color $transition, box-shadow $transition;
+
+    &:hover {
+        border-color: rgba($color-primary, 0.5);
+        box-shadow: $shadow-card;
+
+        .event-card__image {
+            transform: scale(1.1);
+        }
+
+        .event-card__title {
+            color: map-get(g.$colors, 'primary-light');
+        }
+    }
+
+    &__header {
+        position: relative;
+        height: 12rem;
+        overflow: hidden;
+    }
+
+    &__image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+
+    &__header::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), transparent);
+    }
+
+    &__badge {
+        position: absolute;
+        top: 0.75rem;
+        left: 0.75rem;
+        padding: 0.25rem 0.75rem;
+        background-color: map-get(g.$colors, 'primary-light');
+        font-size: 0.75rem;
+        font-weight: 600;
+        border-radius: g.$border-radius;
+        z-index: 1;
+    }
+
+    &__body {
+        padding: 1.25rem;
+    }
+
+    &__title {
+        font-size: 1.125rem;
+        font-weight: 600;
+        transition: map-get(g.$colors, 'primary-light') $transition;
+        overflow: hidden;
+    }
+
+    &__info-list {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__info-item {
+        display: flex;
+        align-items: center;
+        font-size: 0.875rem;
+        color: $color-text-muted;
+    }
+
+    &__icon {
+        width: 1rem;
+        color: $color-primary;
+    }
+}

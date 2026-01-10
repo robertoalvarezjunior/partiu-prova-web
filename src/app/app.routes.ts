@@ -28,6 +28,10 @@ export const routes: Routes = [
     loadComponent: () => import('./features/profile/profile').then((m) => m.Profile),
   },
   {
+    path: 'events',
+    loadComponent: () => import('./features/events/events').then((m) => m.Events),
+  },
+  {
     path: '',
     redirectTo: '/',
     pathMatch: 'full',
