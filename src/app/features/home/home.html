@@ -8,7 +8,9 @@
       Retire seu ingresso e viva a emoção de cruzar a linha de chegada.
     </p>
     <div class="hero-section__button">
-      <button ui-button size="lg" routerLink="/events">Ver Eventos &rarr;</button>
+      <button ui-button size="lg" routerLink="/events">
+        Ver Eventos <app-icon name="arrow_forward" size="16" />
+      </button>
       @if (!auth.isAuthenticated()) {
       <button ui-button size="lg" variant="secondary" routerLink="/sign-up">Criar Conta</button>
       }
@@ -20,12 +22,17 @@
     <h1 class="next-event__title">Próximos eventos</h1>
     <div class="next-event__description__container">
       <p>As melhores provas te esperam</p>
-      <a routerLink="/events">Ver todos &rarr;</a>
+      <a routerLink="/events">Ver todos <app-icon name="arrow_forward" size="14" /></a>
     </div>
   </div>
   <div class="events">
-    @for (item of events(); track $index) {
-    <app-ui-card-event></app-ui-card-event>
+    @for (event of eventsCard(); track event.id ) {
+    <app-ui-card-event
+      [title]="event.title"
+      [date]="event.starts_at"
+      [local]="event.local"
+      [category]="event.category.name"
+    />
     }
   </div>
 </section>

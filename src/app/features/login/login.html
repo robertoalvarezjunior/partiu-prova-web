@@ -1,1 +1,85 @@
-<app-login-component />
+<main class="main">
+  <div class="card">
+    <div class="title">
+      <h2>Bem-vindo de volta!</h2>
+    </div>
+    <button
+      ui-button
+      type="button"
+      size="lg"
+      [wFull]="true"
+      variant="secondary"
+      (click)="loginWithGoogle()"
+      [disabled]="isLoadingGoogle()"
+      class="card-social-button"
+    >
+      @if (isLoadingGoogle()) {
+      <span class="animate-pulse">Autenticando...</span>
+      } @else {
+      <img
+        ngSrc="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
+        width="24"
+        height="24"
+        priority
+        alt="Google Logo"
+      />
+      <span>Continuar com o Google</span>
+      }
+    </button>
+    <div class="divider">
+      <div class="divider-text">
+        <span>Ou use seu e-mail</span>
+      </div>
+    </div>
+    <form (submit)="onSubmit($event)" class="form">
+      <div class="form-group">
+        <div class="form-input">
+          <label for="email" class="">E-mail</label>
+          <input
+            id="email"
+            type="email"
+            [field]="loginForm.email"
+            placeholder="exemplo@email.com"
+          />
+          @if (loginForm.email().invalid() && loginForm.email().touched()) {
+          <div class="error-message">
+            @for (error of loginForm.email().errors(); track error) {
+            <p>{{ error.message }}</p>
+            }
+          </div>
+          }
+        </div>
+        <div class="form-input">
+          <label for="password" class="">Senha</label>
+          <input
+            id="password"
+            type="password"
+            [field]="loginForm.password"
+            placeholder="••••••••"
+          />
+          @if (loginForm.password().invalid() && loginForm.password().touched()) {
+          <div class="error-message">
+            @for (error of loginForm.password().errors(); track error) {
+            <p>{{ error.message }}</p>
+            }
+          </div>
+          } @if (hasError()) {
+          <div class="error-message">
+            <p>{{ hasError() }}</p>
+          </div>
+          }
+          <a>Esqueceu a senha?</a>
+        </div>
+        <button type="submit" ui-button size="lg" [disabled]="loginForm().invalid() || isLoading()">
+          @if (isLoading()) {
+          <span class="animate-pulse">Autenticando...</span>
+          } @else { ENTRAR NA CONTA }
+        </button>
+      </div>
+    </form>
+    <div class="p-cadastro">
+      <p>Não tem uma conta?</p>
+      <a routerLink="/sign-up">Cadastre-se</a>
+    </div>
+  </div>
+</main>

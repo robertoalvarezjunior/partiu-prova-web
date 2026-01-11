@@ -8,7 +8,7 @@ export const routes: Routes = [
   },
   {
     path: 'sign-up',
-    loadComponent: () => import('./features/sign-up/sign-up').then((m) => m.SignUp),
+    loadComponent: () => import('./features/signup/sign.up').then((m) => m.SignUp),
   },
   {
     path: '',
@@ -16,8 +16,7 @@ export const routes: Routes = [
   },
   {
     path: 'success',
-    loadComponent: () =>
-      import('./components/success-component/success-component').then((m) => m.SuccessComponent),
+    loadComponent: () => import('./features/success/success').then((m) => m.Success),
   },
   {
     path: 'auth/callback',

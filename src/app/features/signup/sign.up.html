@@ -5,14 +5,13 @@
     </div>
     <form (submit)="onSubmit($event)" class="form">
       <div class="form-group">
-        <div class="form-input">
-          <label for="email" class="">E-mail</label>
-          <input
-            id="email"
-            type="email"
-            [field]="signUpForm.email"
-            placeholder="exemplo@email.com"
-          />
+        <app-ui-input
+          label="Email"
+          id="email"
+          type="email"
+          [field]="signUpForm.email"
+          placeholder="exemplo@email.com"
+        >
           @if (signUpForm.email().invalid() && signUpForm.email().touched()) {
           <div class="error-message">
             @for (error of signUpForm.email().errors(); track error) {
@@ -20,15 +19,14 @@
             }
           </div>
           }
-        </div>
-        <div class="form-input">
-          <label for="password" class="">Senha</label>
-          <input
-            id="password"
-            type="password"
-            [field]="signUpForm.password"
-            placeholder="••••••••"
-          />
+        </app-ui-input>
+        <app-ui-input
+          label="Senha"
+          id="password"
+          type="password"
+          [field]="signUpForm.password"
+          placeholder="••••••••"
+        >
           @if (signUpForm.password().invalid() && signUpForm.password().touched()) {
           <div class="error-message">
             @for (error of signUpForm.password().errors(); track error) {
@@ -36,17 +34,14 @@
             }
           </div>
           }
-        </div>
-        <div class="form-input">
-          <div class="">
-            <label for="confirmPassword" class="">Confirmar Senha</label>
-          </div>
-          <input
-            id="confirmPassword"
-            type="password"
-            [field]="signUpForm.confirmPassword"
-            placeholder="••••••••"
-          />
+        </app-ui-input>
+        <app-ui-input
+          label="Confirme a senha"
+          id="confirmPassword"
+          type="password"
+          [field]="signUpForm.confirmPassword"
+          placeholder="••••••••"
+        >
           @if (signUpForm.confirmPassword().invalid() && signUpForm.confirmPassword().touched()) {
           <div class="error-message">
             @for (error of signUpForm.confirmPassword().errors(); track error) {
@@ -54,14 +49,17 @@
             }
           </div>
           }
-          <a>Esqueceu a senha?</a>
-        </div>
-        <app-main-button-component size="lg" [disabled]="signUpForm().invalid() || isLoading()"
-          >@if (isLoading()) {
+        </app-ui-input>
+        <button ui-button size="lg" [disabled]="signUpForm().invalid() || isLoading()">
+          @if (isLoading()) {
           <span class="animate-pulse">Autenticando...</span>
-          } @else { ENTRAR NA CONTA }</app-main-button-component
-        >
+          } @else { CRIAR CONTA }
+        </button>
       </div>
     </form>
+    <div class="p-cadastro">
+      <p>Tem uma conta?</p>
+      <a routerLink="/login">Entrar</a>
+    </div>
   </div>
 </main>

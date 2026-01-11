@@ -1,0 +1,11 @@
+<div class="group">
+  <label class="group__label" [for]="id()">{{ label() }}</label>
+  <input
+    class="group__input"
+    [id]="id()"
+    [type]="type()"
+    [field]="field()"
+    [placeholder]="placeholder()"
+  />
+  <ng-content />
+</div>

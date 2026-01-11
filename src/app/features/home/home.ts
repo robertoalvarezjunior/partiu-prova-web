@@ -1,33 +1,32 @@
-import { ChangeDetectionStrategy, Component, OnInit, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnInit, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { UiButton } from '../../shared/components/ui.button/ui.button';
 import { injectAuthService } from '../../core/auth/services/auth.service';
 import { UiCardEvent } from '../../shared/components/ui.card.event/ui.card.event';
-import { injectSupabase } from '../../core/supabase/services/client.service';
+import { EventService } from '../events/services/event.service';
+import { EventCardModel } from '../../core/models/event.model';
+import { Icon } from '../../shared/components/icon/icon';
 
 @Component({
   selector: 'app-home',
-  imports: [RouterLink, UiButton, UiCardEvent],
+  imports: [RouterLink, UiButton, UiCardEvent, Icon],
   templateUrl: './home.html',
   styleUrl: './home.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Home {
   auth = injectAuthService();
-  client = injectSupabase();
+  event = inject(EventService);
 
-  events = signal<Array<any>>([]);
+  eventsCard = signal<EventCardModel[]>([]);
 
   constructor() {
-    this.getEvents();
+    this.getEventsCard();
   }
 
-  async getEvents() {
-    const { data, error } = await this.client
-      .from('events')
-      .select('id, title, starts_at')
-      .limit(3);
-    if (error) throw error;
-    this.events.set(data ?? []);
+  async getEventsCard(): Promise<void> {
+    const events = await this.event.getEventsCard();
+
+    this.eventsCard.set(events);
   }
 }

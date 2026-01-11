@@ -37,6 +37,22 @@
         align-items: start;
         gap: 1rem;
         margin-top: 1.5rem;
+
+        button {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+
+            app-icon {
+                transition: transform 0.2s ease-in-out;
+            }
+
+            &:hover {
+                app-icon {
+                    transform: translateX(4px);
+                }
+            }
+        }
     }
 }
 
@@ -67,7 +83,11 @@
         justify-content: space-between;
 
         a {
-            color: map-get(g.$colors, "primary-light");
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+
+            // color: map-get(g.$colors, "primary-light");
             background-color: map-get(g.$colors, "bg-hl-light");
             border: 1px solid map-get(g.$colors, "primary-light");
             border-radius: 8px;
@@ -76,7 +96,7 @@
 
             &:hover {
                 background-color: map-get(g.$colors, "primary-light");
-                color: map-get(g.$colors, "bg-light");
+                // color: map-get(g.$colors, "bg-light");
             }
         }
 
@@ -118,4 +138,5 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1.5rem;
+    padding: 1rem 12px;
 }

@@ -1,16 +1,17 @@
 import { Component, inject, signal } from '@angular/core';
-import { MainButtonComponent } from '../main-button-component/main-button-component';
-import { email, form, minLength, required, validate, Field, submit } from '@angular/forms/signals';
+import { email, Field, form, minLength, required, submit, validate } from '@angular/forms/signals';
 import { injectAuthService } from '../../core/auth/services/auth.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { UiButton } from '../../shared/components/ui.button/ui.button';
+import { UiInput } from '../../shared/components/ui.input/ui.input';
 
 @Component({
-  selector: 'app-sign-up-component',
-  imports: [MainButtonComponent, Field],
-  templateUrl: './sign-up-component.html',
-  styleUrl: './sign-up-component.scss',
+  selector: 'app-sign-up',
+  imports: [Field, RouterLink, UiButton, UiInput],
+  templateUrl: './sign.up.html',
+  styleUrl: './sign.up.scss',
 })
-export class SignUpComponent {
+export class SignUp {
   signUpModel = signal({
     email: '',
     password: '',
@@ -21,7 +22,6 @@ export class SignUpComponent {
 
   private auth = injectAuthService();
 
-  // UI State com Signals
   isLoading = signal(false);
   isLoadingGoogle = signal(false);
 
