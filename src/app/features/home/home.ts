@@ -25,7 +25,7 @@ export class Home {
   }
 
   async getEventsCard(): Promise<void> {
-    const events = await this.event.getEventsCard();
+    const events = await this.event.getEventsHome();
 
     this.eventsCard.set(events);
   }

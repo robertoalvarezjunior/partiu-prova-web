@@ -1,5 +1,7 @@
 <div class="group">
+  @if (label().length > 0) {
   <label class="group__label" [for]="id()">{{ label() }}</label>
+  }
   <input
     class="group__input"
     [id]="id()"

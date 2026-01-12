@@ -12,5 +12,5 @@ export class UiInput {
   type = input.required<string>();
   id = input.required<string>();
   placeholder = input.required<string>();
-  label = input.required<string>();
+  label = input<string>('');
 }

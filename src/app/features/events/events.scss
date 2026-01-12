@@ -1,0 +1,102 @@
+@use '../../../global' as g;
+
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: calc(1rem + g.$nav-height) 12px;
+        width: 100%;
+        max-width: g.$max-width;
+
+        &__title {
+            padding: 4rem 0;
+            width: 100%;
+            gap: 1.5rem;
+
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: center;
+
+            & h1 {
+                font-size: map-get(g.$font-sizes, "h1-mobile");
+                font-weight: 800;
+                text-transform: uppercase;
+                line-height: 1.1;
+                color: rgb(46, 46, 46);
+            }
+
+            & p {
+                font-size: map-get(g.$font-sizes, "body");
+                color: rgb(124, 124, 124);
+                font-weight: 500;
+            }
+        }
+
+        &__form {
+            width: 100%;
+        }
+
+        &__input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid gray;
+            border-radius: g.$border-radius;
+            margin-bottom: 1rem;
+
+            &:focus-visible {
+                outline: none;
+                border-color: map-get(g.$colors, 'primary-light');
+                box-shadow: 0 0 0 2px map-get(g.$colors, 'primary-light');
+            }
+        }
+
+        &__buttons {
+            display: flex;
+            justify-content: flex-start;
+            gap: 1rem;
+
+            & button {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: g.$border-radius;
+                border: 1px solid map-get(g.$colors, 'bc-secondary');
+                cursor: pointer;
+                gap: 1rem;
+                padding: 12px;
+                margin: 12px 0;
+                background-color: rgb(240, 240, 240);
+
+                &:hover {
+                    background-color: map-get(g.$colors, 'bg-light');
+                    border: 1px solid map-get(g.$colors, 'primary-light');
+                }
+            }
+
+            @media (max-width: g.$mobile-breakpoint) {
+                flex-direction: column;
+                margin: 0;
+                gap: 0;
+            }
+        }
+    }
+}
+
+.events {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 450px);
+    gap: 1rem;
+    padding: 1rem 0;
+    width: 100%;
+
+    @media (max-width: g.$mobile-breakpoint) {
+        grid-template-columns: repeat(auto-fit, 100%);
+    }
+}
