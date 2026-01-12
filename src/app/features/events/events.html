@@ -10,8 +10,9 @@
         class="content__input"
         placeholder="Digite sua busca"
         [(ngModel)]="searchTerm"
-        (ngModelChange)="onSearchChange($event)"
         name="search"
+        autocomplete="on"
+        (keyup)="updateTimer()"
       />
       <div class="content__buttons">
         <button type="button"><app-icon name="calendar_today" />Selecione uma Data</button>
