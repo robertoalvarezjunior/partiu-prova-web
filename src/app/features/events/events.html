@@ -15,10 +15,21 @@
         (keyup)="updateTimer()"
       />
       <div class="content__buttons">
-        <button type="button"><app-icon name="calendar_today" />Selecione uma Data</button>
-        <button type="button">
-          Selecione uma Categoria<app-icon name="keyboard_arrow_down" />
+        @if (!selectedCategory()) {
+        <button ui-button type="button" (click)="onCategorySelected()">Todos</button>
+        }@else {
+        <button ui-button type="button" variant="secondary" (click)="onCategorySelected()">
+          Todos
         </button>
+        } @for (cat of categories(); track cat.id) { @if (cat === selectedCategory()) {
+        <button ui-button type="button" (click)="onCategorySelected(cat)">
+          {{ cat.name }}
+        </button>
+        }@else {
+        <button ui-button type="button" variant="secondary" (click)="onCategorySelected(cat)">
+          {{ cat.name }}
+        </button>
+        } }
       </div>
     </div>
     <div class="events">

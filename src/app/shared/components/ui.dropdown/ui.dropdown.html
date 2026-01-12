@@ -1,0 +1,15 @@
+<div class="dropdown">
+  <button (click)="toggleDropdown()" class="dropdown-toggle">
+    {{ selectedItem ? selectedItem.name : 'Selecione uma Categoria' }}
+    <app-icon name="keyboard_arrow_down" />
+  </button>
+  @if (isOpen) {
+  <div class="dropdown-menu">
+    @for (item of items(); track item.id) {
+    <a (click)="selectItem(item)">
+      {{ item.name }}
+    </a>
+    }
+  </div>
+  }
+</div>

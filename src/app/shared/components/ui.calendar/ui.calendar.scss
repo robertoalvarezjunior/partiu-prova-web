@@ -1,0 +1,35 @@
+.calendar {
+  width: 300px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+}
+
+.day, .day-name {
+  text-align: center;
+  padding: 5px;
+}
+
+.day:not(.empty) {
+  cursor: pointer;
+}
+
+.day:not(.empty):hover {
+  background-color: #eee;
+}
+
+.empty {
+  visibility: hidden;
+}
