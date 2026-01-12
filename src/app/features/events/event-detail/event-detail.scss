@@ -1,0 +1,132 @@
+@use '../../../../global' as g;
+
+.main {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.flex-col {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.flex-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: row;
+    gap: 1.5rem;
+}
+
+.pd-top {
+    padding-top: calc(0px + g.$nav-height);
+}
+
+.mw {
+    max-width: g.$max-width;
+}
+
+.container {
+    display: grid;
+    gap: 1rem;
+    padding: 1rem;
+    max-width: g.$max-width;
+    margin: -60px auto 0;
+    grid-template-columns: 1fr 350px;
+
+    @media(max-width: g.$mobile-breakpoint) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.img-header {
+    position: relative;
+    height: 300px;
+    width: 100%;
+    z-index: -1;
+
+    &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(255, 255, 255, 0.616), transparent);
+    }
+}
+
+.img {
+    width: 100vw;
+    height: 100%;
+    object-fit: fill;
+}
+
+.badge {
+    background-color: map-get(g.$colors, 'primary-light');
+    padding: 0.25rem 1rem;
+    border-radius: g.$border-radius;
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, calc(1fr / 4));
+    gap: 0.5rem;
+    width: 100%;
+
+    @media(max-width: g.$mobile-breakpoint) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.button-back {
+    position: absolute;
+    top: 3rem;
+    left: 1rem;
+    padding: 0.25rem 0.75rem;
+    background-color: rgba(255, 255, 255, 0.5);
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: g.$border-radius;
+    z-index: 1;
+}
+
+.info-container {
+    gap: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.item {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    & p {
+        font-size: 0.875rem;
+        color: rgb(124, 124, 124);
+        font-weight: 500;
+    }
+}
+
+.box {
+    background-color: white;
+    border-radius: g.$border-radius;
+    border: 1px solid map-get(g.$colors, 'bc-secondary');
+    padding: 12px;
+    width: 100%;
+}
+
+h1 {
+    font-size: map-get(g.$font-sizes, 'h1-mobile');
+}
+
+h2 {
+    font-size: 1.5rem;
+}

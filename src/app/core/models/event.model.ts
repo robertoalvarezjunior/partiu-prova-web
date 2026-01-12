@@ -10,8 +10,6 @@ export interface EventModel {
   policy: string | null;
   coupons: string | null;
   created_by_id: string;
-  created_at: Date | null;
-  modificated_at: Date | null;
   category: CategoryModel;
 }
 

@@ -1,7 +1,6 @@
 <article class="event-card">
   <div class="event-card__header">
     <img src="assets/images/logo.png" alt="Título do Evento" class="event-card__image" />
-    <div class="event-card__overlay"></div>
     <span class="event-card__badge">{{ category() }}</span>
   </div>
 
@@ -15,6 +14,6 @@
       <app-icon name="location_on" aria-label="Localização do Evento" />
       <p class="u-line-clamp-1">{{ local() }}</p>
     </div>
-    <button ui-button>Ver Detalhes</button>
+    <button ui-button type="button" [routerLink]="btn()">Ver Detalhes</button>
   </div>
 </article>

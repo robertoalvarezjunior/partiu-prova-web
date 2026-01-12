@@ -73,4 +73,8 @@ export class Events implements OnInit {
     this.selectedCategory.set(category);
     this.getEvents(this.searchTerm(), category.id);
   }
+
+  navigateTo(path: string, id?: string): string {
+    return `/${path}/${id}`;
+  }
 }

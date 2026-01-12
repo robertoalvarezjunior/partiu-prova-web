@@ -31,6 +31,11 @@ export const routes: Routes = [
     loadComponent: () => import('./features/events/events').then((m) => m.Events),
   },
   {
+    path: 'event/:id',
+    loadComponent: () =>
+      import('./features/events/event-detail/event-detail').then((m) => m.EventDetail),
+  },
+  {
     path: '',
     redirectTo: '/',
     pathMatch: 'full',

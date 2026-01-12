@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { injectSupabase } from '../../../core/supabase/services/client.service';
-import { EventCardModel } from '../../../core/models/event.model';
+import { EventCardModel, EventModel } from '../../../core/models/event.model';
 import { CategoryModel } from '../../../core/models/category.model';
 
 @Injectable({
@@ -33,15 +33,6 @@ export class EventService {
     if (searchTerm) {
       query = query.ilike('title', `%${searchTerm}%`);
     }
-
-    // if (date) {
-    //   const year = date.getFullYear();
-    //   const month = date.getMonth() + 1;
-    //   const day = date.getDate();
-    //   query = query.gte('starts_at', `${year}-${month}-${day} 00:00:00`);
-    //   query = query.lte('starts_at', `${year}-${month}-${day} 23:59:59`);
-    // }
-
     if (categoryId) {
       query = query.eq('category_id', categoryId);
     }
@@ -61,5 +52,20 @@ export class EventService {
       throw error;
     }
     return (data as CategoryModel[]) ?? [];
+  }
+
+  async getEventById(id: string): Promise<EventModel> {
+    const { data, error } = await this.client
+      .from('events')
+      .select(
+        'id, title, description, starts_at, ends_at, local, policy, coupons, created_by_id, category:categories(name)'
+      )
+      .eq('id', id)
+      .single();
+    if (error) {
+      console.error('Erro ao buscar evento:', error.message);
+      throw error;
+    }
+    return data as unknown as EventModel;
   }
 }

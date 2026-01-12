@@ -1,0 +1,43 @@
+<section class="main flex-col pd-top">
+  <div class="img-header">
+    <img class="img" src="assets/images/logo.png" alt="" />
+    <span class="button-back">Voltar</span>
+  </div>
+  <div class="flex-row mw container">
+    <main class="info-container">
+      <span class="badge">{{ event()?.category?.name }}</span>
+      <h1>{{ event()?.title }}</h1>
+      <section class="stats-grid">
+        <div class="item box">
+          <app-icon name="calendar_today" />
+          <p>Data</p>
+          <span>{{ date() }}</span>
+        </div>
+        <div class="item box">
+          <app-icon name="schedule" />
+          <p>Horário</p>
+          <span>{{ time() }}</span>
+        </div>
+        <div class="item box">
+          <app-icon name="location_on" />
+          <p>Local</p>
+        </div>
+        <div class="item box">
+          <app-icon name="group" />
+          <p>Quantidade</p>
+        </div>
+      </section>
+      <section class="box">
+        <h2>Sobre o evento</h2>
+        <p></p>
+      </section>
+      <section class="box">
+        <h2>Política</h2>
+        <p></p>
+      </section>
+    </main>
+    <aside>
+      <div>ticket</div>
+    </aside>
+  </div>
+</section>
