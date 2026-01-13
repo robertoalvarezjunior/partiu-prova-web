@@ -107,12 +107,6 @@
     align-items: flex-start;
     flex-direction: column;
     gap: 0.5rem;
-
-    & p {
-        font-size: 0.875rem;
-        color: rgb(124, 124, 124);
-        font-weight: 500;
-    }
 }
 
 .box {
@@ -129,4 +123,25 @@ h1 {
 
 h2 {
     font-size: 1.5rem;
+}
+
+.ticket-type {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid map-get(g.$colors, 'bc-secondary');
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  .ticket-name {
+    font-weight: bold;
+  }
+
+  .ticket-price {
+    color: map-get(g.$colors, 'primary');
+    font-weight: bold;
+  }
 }

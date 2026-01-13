@@ -1,6 +1,7 @@
 import { computed, inject, Injectable, signal } from '@angular/core';
 import { AuthChangeEvent, AuthSession, Session } from '@supabase/supabase-js';
 import { injectSupabase } from '../../supabase/services/client.service';
+import { environment } from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -15,6 +16,8 @@ export class AuthService {
   readonly session = this._session.asReadonly();
   readonly isAuthenticated = computed(() => !!this._session());
   readonly user = computed(() => this._session()?.user ?? null);
+
+  private url: string = environment.redirectUrl;
 
   constructor() {
     this.initialize();
@@ -42,14 +45,14 @@ export class AuthService {
   signInWithOauth() {
     return this.client.auth.signInWithOAuth({
       provider: 'google',
-      options: { redirectTo: 'http://localhost:4200/auth/callback' },
+      options: { redirectTo: `${this.url}auth/callback` },
     });
   }
 
   async signUp(email: string, password: string) {
     return await this.client.auth.signUp({
-      email,
-      password,
+      email: email,
+      password: password,
     });
   }
 

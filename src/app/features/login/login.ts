@@ -40,7 +40,7 @@ export class Login {
       this.isLoadingGoogle.set(true);
       this.hasError.set(null);
 
-      await new Promise((resolve) => this.client.signInWithOauth());
+      await new Promise((_) => this.client.signInWithOauth());
     } catch (error) {
       if (error instanceof Error) {
         this.hasError.set('Impossível fazer login com o Google no momento.');

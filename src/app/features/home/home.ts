@@ -29,4 +29,8 @@ export class Home {
 
     this.eventsCard.set(events);
   }
+
+  navigateTo(path: string, id?: string): string {
+    return `/${path}/${id}`;
+  }
 }

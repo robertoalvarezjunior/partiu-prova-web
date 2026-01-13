@@ -50,9 +50,14 @@
           </div>
           }
         </app-ui-input>
-        <button ui-button size="lg" [disabled]="signUpForm().invalid() || isLoading()">
+        <button
+          ui-button
+          type="submit"
+          size="lg"
+          [disabled]="signUpForm().invalid() || isLoading()"
+        >
           @if (isLoading()) {
-          <span class="animate-pulse">Autenticando...</span>
+          <span class="animate-pulse">Criando conta...</span>
           } @else { CRIAR CONTA }
         </button>
       </div>

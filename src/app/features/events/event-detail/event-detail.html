@@ -21,6 +21,7 @@
         <div class="item box">
           <app-icon name="location_on" />
           <p>Local</p>
+          <span>{{ event()?.local }}</span>
         </div>
         <div class="item box">
           <app-icon name="group" />
@@ -29,15 +30,38 @@
       </section>
       <section class="box">
         <h2>Sobre o evento</h2>
-        <p></p>
+        <p>{{ event()?.description }}</p>
       </section>
+      @if (event()?.policy) {
       <section class="box">
         <h2>Política</h2>
-        <p></p>
+        <p>{{ event()?.policy }}</p>
       </section>
+      }
     </main>
-    <aside>
-      <div>ticket</div>
+    <aside class="box">
+      <h2>Ingressos</h2>
+      <div class="ticket-type">
+        <div>
+          <p class="ticket-name">Pista</p>
+          <p class="ticket-price">R$ 50,00</p>
+        </div>
+        <button ui-button>Comprar</button>
+      </div>
+      <div class="ticket-type">
+        <div>
+          <p class="ticket-name">Pista Premium</p>
+          <p class="ticket-price">R$ 100,00</p>
+        </div>
+        <button ui-button>Comprar</button>
+      </div>
+      <div class="ticket-type">
+        <div>
+          <p class="ticket-name">Camarote</p>
+          <p class="ticket-price">R$ 150,00</p>
+        </div>
+        <button ui-button>Comprar</button>
+      </div>
     </aside>
   </div>
 </section>

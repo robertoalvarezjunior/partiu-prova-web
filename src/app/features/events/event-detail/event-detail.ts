@@ -1,14 +1,14 @@
 import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { Icon } from '../../../shared/components/icon/icon';
 import { ActivatedRoute } from '@angular/router';
-import { ClientService, injectSupabase } from '../../../core/supabase/services/client.service';
 import { EventModel } from '../../../core/models/event.model';
 import { EventService } from '../services/event.service';
 import { formatDate } from '@angular/common';
+import { UiButton } from '../../../shared/components/ui.button/ui.button';
 
 @Component({
   selector: 'app-event-detail',
-  imports: [Icon],
+  imports: [Icon, UiButton],
   templateUrl: './event-detail.html',
   styleUrl: './event-detail.scss',
 })

@@ -52,7 +52,7 @@ export class SignUp {
       submit(this.signUpForm, async () => {
         try {
           this.isLoading.set(true);
-          const { data, error } = await this.auth.signUp(
+          const { error } = await this.auth.signUp(
             this.signUpForm.email().value(),
             this.signUpForm.password().value()
           );
@@ -64,7 +64,7 @@ export class SignUp {
           });
         } catch (error) {
           if (error instanceof Error) {
-            alert(error.message);
+            console.log('error', error.message);
           }
         } finally {
           this.isLoading.set(false);

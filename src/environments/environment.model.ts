@@ -3,4 +3,5 @@ export interface AppConfig {
   apiUrl: string;
   supabaseUrl: string;
   supabaseKey: string;
+  redirectUrl: string;
 }
